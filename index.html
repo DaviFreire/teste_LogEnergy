@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Teste LogEnergy</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<script language="javascript" src="../scripts/scripts.js"></script>
+<script language="JavaScript">
+	function Submeter(){
+		site = 'gerararquivo.php';
+		openWindowWithPost(site, "Relatório", [], [], "resizable=0,toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,width=800,height=670,top=30,left=30");
+	}
+
+	function openWindowWithPost(url,name,keys,values,tamanhoWindows){
+		var newWindow = window.open(url, name, tamanhoWindows);
+		if (!newWindow) return false;
+		var html = "";
+		html += "<html><head><\/head><body><form id='formid' method='post' action='" + url + "'>";
+		if (keys && values && (keys.length == values.length))
+		for (var i=0; i < keys.length; i++)
+		html += "<input type='hidden' name='" + keys[i] + "' value='" + values[i] + "'\/>";
+		html += "<\/form><script type='text\/javascript'>document.getElementById(\"formid\").submit()<\/script><\/body><\/html>";
+		
+		newWindow.document.write(html);
+		return newWindow;
+	}
+</script>
+
+<body topmargin="0">
+	<form method="post" id="frm" name="frm">
+
+		<nav class="navbar navbar-dark bg-dark">
+			<div class="container">
+		  		<a class="navbar-brand" href="#">Teste LogEnergy</a>
+		  	</div>
+		</nav>
+		<div class="container" style="margin-top: 20px;">	
+			<div class="form-group">	
+				<button type="button" class="btn btn-primary" onclick="Submeter()">Gerar Arquivo</button>
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>
